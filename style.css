@@ -1,0 +1,367 @@
+body{
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    letter-spacing: 0.4px;
+    line-height: 22px;
+    background-color: rgb(241, 241, 241, 0.5);
+
+
+}
+
+
+
+.topcontainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: calc(100% - 40px);
+    max-width: 800px;
+    gap:10px;
+    margin: 80px auto 0;
+
+}
+
+.topcontainer a{
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    padding-bottom:5px;
+    transition: all 0.2s ease;
+}
+
+.topcontainer a:hover{
+     color: rgb(160, 159, 159);
+}
+
+
+
+
+.topcontainer h1{
+    font-weight: bold;
+    font-size: 53px;
+    align-self: flex-start;
+    font-family: "Caveat", cursive;
+
+
+
+}
+
+
+
+.btn-coverage{
+    display: flex;
+    width: 100%;
+    gap: 10px;
+    height: 60px;
+    flex-wrap: wrap;
+}
+
+.bottom,
+.resume,
+.interactive,
+.data,
+.graphic,
+.reporting{
+    display: flex;
+    align-items: end;
+    width: fit-content;   
+    padding: 0 6px;
+    color: linear-gradient(90deg, rgba(0, 0, 0, 1) 0%, rgba(130, 129, 129, 1) 52%, rgba(255, 255, 255, 1) 100%);
+    height: 30px;
+    cursor: pointer;
+    border-bottom: 1px solid transparent;
+     font-family: "Saira", sans-serif;
+    transition: all 0.2s ease;
+
+
+
+}
+
+.bottom:hover,
+.resume:hover,
+.interactive:hover,
+.data:hover,
+.graphic:hover,
+.reporting:hover{
+    border-bottom-color: rgb(122,122,122);
+    color: rgb(122, 122, 122);
+    
+}
+
+
+
+
+
+.resume-container{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+
+
+}
+
+#resume, #portfolio{
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+
+    position: relative;
+    top: auto;
+    flex-direction: column;
+    max-width: 800px;
+    width: calc(100% - 40px);
+    margin: 60px auto 0;
+ 
+
+}
+
+#resume h2{
+    font-size: 20px;
+    
+}
+
+#resume h3{
+    font-size: 17px;
+}
+
+#resume p{
+margin:0px;
+}
+
+
+
+.portfoliocontainer{
+   display: flex;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+
+}
+
+.portfoliocontainer h2{
+    font-size: 20px;
+    font-family: "Saira", sans-serif;
+
+
+
+}
+
+.grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap:20px;
+
+
+    
+   
+
+
+}
+
+.hoveruse{
+    margin:0px;
+    padding:0px;
+    border:0px;
+    transition: all 0.3s ease;
+    max-width: 500px;
+
+
+
+
+}
+
+.hoveruse a{
+    text-decoration: none;
+    color:black;
+}
+
+.hoveruse:hover{
+    transform: translateX(3px) translateY(-3px);
+
+    
+
+}
+
+.social-icons {
+    display: flex;
+    align-self: flex-start;
+    gap: 32px;
+    
+}
+
+.social-icons a {
+    color: #999387;
+    font-size: 20px;
+    text-decoration: none;
+    transition: 0.2s;
+    padding-top: 0px;
+}
+
+.social-icons a:hover {
+    color: #333;
+    transform: translateY(-3px);
+}
+
+.smallbox{
+    display: flex;
+    flex-direction: column;
+ 
+    background-color: white;
+    border: 1px solid rgb(119, 117, 117);
+
+    max-width: 500px;
+    padding: 20px;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+   
+}
+
+
+.smallbox img{
+    position: relative;
+    width:100%;
+    height: auto;
+    
+}
+
+.preview-media{
+    position: relative;
+    width:100%;
+    height: auto;
+    display: block;
+
+}
+
+.smallbox h2{
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 0px;
+
+}
+
+.smallbox p{
+    font-size: 15px;
+    color: rgb(94, 93, 93);
+
+}
+
+.tags{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 4px;
+    margin-top: 8px;
+}
+
+.tag{
+    display: inline-block;
+    padding: 2px 6px;
+    border-radius: 2px;
+    font-size: 12px;
+    line-height: 1.2;
+    color:white;
+    font-weight: 500;
+
+}
+
+.Javascript{
+    background-color: #6d82b6;
+}
+
+.R{
+    background-color: #33074e;
+}
+
+.Python{
+    background-color: #675471;
+}
+
+.Flourish{
+    background-color: #35293c;
+}
+
+.HTMLCSS{
+    background-color: #033b6f;
+}
+
+.Datawrapper{
+    background-color: #041f11;
+}
+
+.oakland{
+    background-color: #51210b;
+
+    }
+
+.Adobe{
+    background-color: #e0ac94;
+}
+
+.intro-underline {
+    background: linear-gradient(
+        transparent 52%,
+        rgba(255, 230, 100, 0.7) 52%
+    );
+    padding: 0 3px;
+}
+
+@media (max-width: 768px) {
+
+    .topcontainer {
+        position: relative;
+        grid-template-columns: 1fr;
+        width: calc(100% - 40px);
+        max-width: 500px;
+
+        top: auto;
+        left: auto;
+        transform: none;
+
+        margin: 70px auto 0;
+        gap: 20px;
+    }
+
+    .topcontainer-right {
+        grid-row: 1;
+        justify-self: center;
+    }
+
+    .topcontainer-left {
+        grid-row: 2;
+        width: 100%;
+    }
+
+    .btn-coverage {
+        width: 100%;
+        height: auto;
+        flex-wrap: wrap;
+        margin-top: 10px;
+    }
+
+    #resume,
+    #portfolio {
+        top: auto;
+        width: calc(100% - 40px);
+        max-width: 500px;
+        margin-top: 40px;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+       
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

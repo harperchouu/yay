@@ -1,0 +1,65 @@
+body{
+    font-family: "Inter", sans-serif;
+    margin: 20px;
+   
+
+}
+
+h1{
+
+    font-weight:bolder;
+    margin-bottom: 0px;
+
+}
+
+.content{
+    display: flex;
+    flex-direction: column;
+    max-width: 700px;
+    
+    justify-content: center;
+    align-items: center;
+
+}
+
+iframe {
+    width: 100%;
+    border: none;
+    display: block;
+    height: 9100px;
+}
+
+
+
+@media (max-width: 600px) {
+
+    body {
+
+        margin: 12px;
+
+    }
+
+    .code-cell {
+
+        grid-template-columns: 48px minmax(0, 1fr);
+
+    }
+
+    .code-label {
+
+        font-size: 11px;
+
+        padding-right: 6px;
+
+    }
+
+    .code-block {
+
+        padding: 12px;
+
+        font-size: 12px;
+
+    }
+
+}
+

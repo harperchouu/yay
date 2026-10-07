@@ -1,0 +1,153 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+
+body{
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: "Inter", sans-serif;
+ 
+}
+
+
+
+.content{
+    display: flex;
+    flex-direction: column;
+    width: min(600px, calc(100% - 40px));
+    max-width: 600px;
+    justify-content: center;
+}
+
+.content p{
+    font-size: 16px;
+
+}
+
+
+.content h2{
+    font-size: 27px;
+    margin-top: 40px;
+
+}
+
+.content a{
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.content h4{
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 30px;
+    margin-bottom: 0px;
+    text-decoration: underline;
+
+}
+
+.language-python{
+
+    width: 100%;
+    max-width: 700px;
+    padding: 6px;
+    overflow-x: auto;
+
+}
+
+pre{
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(231, 229, 229);
+    align-items: center;
+    overflow-x: auto;
+   
+}
+
+.code{
+  font-family: "Courier New", monospace;
+  margin-top: 0;
+}
+
+.output{
+    background-color: white;
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    font-size: 15px;
+    line-height: 1.5;
+    overflow-x: auto;
+    border: none;
+    width:100%;
+    max-width: 800px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    overflow-x: auto;
+
+}
+
+.explain{
+    display: flex;
+    width: 100%;
+    max-width: 700px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: aliceblue;
+    font-size: 15px;
+    padding: 20px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+
+@media (max-width: 768px) {
+    .content {
+        width: min(600px, calc(100% - 32px));
+    }
+
+    .content h2 {
+        font-size: 24px;
+    }
+
+    .explain {
+        width: calc(100% - 32px);
+        padding: 18px;
+    }
+
+    pre{
+    width: calc(100% - 32px);
+    overflow-x: auto;
+   
+}
+
+
+}
+
+
+@media (max-width: 480px) {
+    .content {
+        width: calc(100% - 24px);
+    }
+
+    .content h2 {
+        font-size: 22px;
+    }
+
+
+
+    .content p {
+        font-size: 15px;
+        line-height: 1.7;
+    }
+
+    .pre{
+    width: calc(100% - 24px);
+    overflow-x: auto;
+   
+}
+}

@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="data.css">
+    <link href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-python.min.js"></script>
+</head>
+
+
+<body>
+
+<div class="content">
+    <h2>Here is how I clean and analyse data</h2>
+    <p>
+        <strong>First step, get the dataset</strong><br><br>I got my data from the <a href="https://eng.stat.gov.tw/" target="_blank">National Statistics website</a>. This is data on youth victims by offense type. Before downloading it, I first checked that the dataset was in the right format and also its publication date.
+        Then I started to clean and analyse my dataset using Python and the pandas libraries. 
+    </p>
+
+</div>
+
+<pre><code class="language-python"># Import the dataset
+import pandas as pd
+
+df = pd.read_csv("youth_victims.csv")
+df.head(10)
+# drop the columns that I don't need
+df = df.drop(columns=['Offense Category (%)', 'Percentage of Total Victims'])
+# after making sure that "-" means no value, change "-" to 0
+df = df.replace("-", 0)
+df
+#Check the data types of each column
+df.dtypes
+df["Male"] = df["Male"].astype(int)
+df["Female"] = df["Female"].astype(int)
+df["Change in Number"] = df["Change in Number"].astype(int)
+df["Growth Rate (%)"] = df["Growth Rate (%)"].astype(float)
+df.dtypes
+# Save the cleaned dataset
+df.to_csv('youth1.csv',encoding='utf-8')
+</code></pre>
+
+<div class="content">
+    <strong style="margin-top: 30px">Focus on the part I want to futhrer research and report on</strong>
+    <p>Eventually, I would separate the data for male and female victims, and create two charts to compare the two groups. Since the total number isn’t exactly the same between males and females, I first transferred the number to percentage, and deleted the total row. </p>
+</div>
+
+<pre><code class="language-python">
+# Create a copy of the dataFrame
+youth2 = df.copy()
+male_total = youth2.loc[0, "Male"]      
+female_total = youth2.loc[0, "Female"] 
+# Divide the male and female values by their respective total values
+youth2["Male"] = youth2["Male"] / male_total
+youth2["Female"] = youth2["Female"] / female_total
+# Delete the total row
+youth2 = youth2.drop(index=0).reset_index(drop=True)
+#Change the unit to %
+youth2["Male"] = (youth2["Male"] * 100).round(2)
+youth2["Female"] = (youth2["Female"] * 100).round(2)
+youth2
+</code></pre>
+
+<div class="content">
+    <strong style="margin-top: 30px">Start exploring the data</strong>
+    <p>After we have a clean dataset, we can start looking for stories in the data. I first sorted the data by male victims and then by female victims to identify the most common offense types.</p>
+</div>
+
+<pre><code class="language-python">
+youth2.sort_values(by='Male',ascending=False)
+</code></pre>
+
+<div class="output">
+        <table class="dataframe dataframe">
+    <thead>
+        <tr style="text-align: left;">
+        <th></th>
+        <th>Offense Type</th>
+        <th>Number of Youth Victims</th>
+        <th>Male</th>
+        <th>Female</th>
+        <th>Change in Number</th>
+        <th>Growth Rate (%)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+        <th>8</th>
+        <td>Fraud</td>
+        <td>1700</td>
+        <td>19.21</td>
+        <td>20.23</td>
+        <td>-728</td>
+        <td>-29.98</td>
+        </tr>
+        <tr>
+        <th>5</th>
+        <td>Theft</td>
+        <td>1080</td>
+        <td>17.48</td>
+        <td>7.08</td>
+        <td>-85</td>
+        <td>-7.30</td>
+        </tr>
+        <tr>
+        <th>6</th>
+        <td>Assault</td>
+        <td>957</td>
+        <td>16.81</td>
+        <td>4.83</td>
+        <td>216</td>
+        <td>29.15</td>
+        </tr>
+        <tr>
+        <th>18</th>
+        <td>Offenses Against Computer Security</td>
+        <td>745</td>
+        <td>8.98</td>
+        <td>8.25</td>
+        <td>412</td>
+        <td>123.72</td>
+        </tr>
+        <tr>
+        <th>12</th>
+        <td>Offenses Against Personal Liberty</td>
+        <td>516</td>
+        <td>6.85</td>
+        <td>5.02</td>
+        <td>46</td>
+        <td>9.79</td>
+        </tr>
+        <tr>
+        <th>13</th>
+        <td>Negligent Driving</td>
+        <td>455</td>
+        <td>6.41</td>
+        <td>4.03</td>
+        <td>14</td>
+        <td>3.17</td>
+        </tr>
+        <tr>
+        <th>22</th>
+        <td>Other</td>
+        <td>689</td>
+        <td>6.25</td>
+        <td>9.87</td>
+        <td>94</td>
+        <td>15.80</td>
+        </tr>
+        <tr>
+        <th>16</th>
+        <td>Embezzlement</td>
+        <td>414</td>
+        <td>5.48</td>
+        <td>4.05</td>
+        <td>16</td>
+        <td>4.02</td>
+        </tr>
+        <tr>
+        <th>17</th>
+        <td>Child and Youth Sexual Exploitation</td>
+        <td>640</td>
+        <td>4.48</td>
+        <td>10.63</td>
+        <td>-109</td>
+        <td>-14.55</td>
+        </tr>
+        <tr>
+        <th>14</th>
+        <td>Public Endangerment</td>
+        <td>209</td>
+        <td>3.24</td>
+        <td>1.53</td>
+        <td>39</td>
+        <td>22.94</td>
+        </tr>
+        <tr>
+        <th>11</th>
+        <td>Sexual Intercourse and Indecent Acts</td>
+        <td>758</td>
+        <td>1.80</td>
+        <td>16.42</td>
+        <td>-211</td>
+        <td>-21.78</td>
+        </tr>
+        <tr>
+        <th>20</th>
+        <td>Offenses Against Sexual Privacy and Fabricated Sexual Images</td>
+        <td>89</td>
+        <td>0.89</td>
+        <td>1.19</td>
+        <td>-49</td>
+        <td>-35.51</td>
+        </tr>
+        <tr>
+        <th>19</th>
+        <td>Violation of Protection Orders</td>
+        <td>65</td>
+        <td>0.60</td>
+        <td>0.92</td>
+        <td>1</td>
+        <td>1.56</td>
+        </tr>
+        <tr>
+        <th>7</th>
+        <td>Extortion</td>
+        <td>34</td>
+        <td>0.58</td>
+        <td>0.19</td>
+        <td>8</td>
+        <td>30.77</td>
+        </tr>
+        <tr>
+        <th>21</th>
+        <td>Sexual Harassment Prevention Act Violations</td>
+        <td>110</td>
+        <td>0.35</td>
+        <td>2.28</td>
+        <td>-49</td>
+        <td>-30.82</td>
+        </tr>
+        <tr>
+        <th>10</th>
+        <td>Sexual Intercourse with a Minor</td>
+        <td>80</td>
+        <td>0.33</td>
+        <td>1.58</td>
+        <td>-49</td>
+        <td>-37.98</td>
+        </tr>
+        <tr>
+        <th>15</th>
+        <td>Offenses Against Marriage and Family</td>
+        <td>64</td>
+        <td>0.20</td>
+        <td>1.33</td>
+        <td>-1</td>
+        <td>-1.54</td>
+        </tr>
+        <tr>
+        <th>9</th>
+        <td>Offenses Against Public Morals</td>
+        <td>10</td>
+        <td>0.02</td>
+        <td>0.22</td>
+        <td>2</td>
+        <td>25.00</td>
+        </tr>
+        <tr>
+        <th>4</th>
+        <td>Forcible Rape</td>
+        <td>14</td>
+        <td>0.02</td>
+        <td>0.32</td>
+        <td>3</td>
+        <td>27.27</td>
+        </tr>
+        <tr>
+        <th>3</th>
+        <td>Snatch Theft</td>
+        <td>1</td>
+        <td>0.02</td>
+        <td>0.00</td>
+        <td>-3</td>
+        <td>-75.00</td>
+        </tr>
+        <tr>
+        <th>2</th>
+        <td>Robbery</td>
+        <td>1</td>
+        <td>0.00</td>
+        <td>0.02</td>
+        <td>0</td>
+        <td>0.00</td>
+        </tr>
+        <tr>
+        <th>1</th>
+        <td>Intentional Homicide</td>
+        <td>0</td>
+        <td>0.00</td>
+        <td>0.00</td>
+        <td>-9</td>
+        <td>-100.00</td>
+        </tr>
+    </tbody>
+    </table>
+    
+</div>
+
+<div class="content">
+    <p>After sorting the values, I found that the distribution of offense types among male youth victims was more concentrated. The top three offense types were noticeably higher than the rest. Now let's take a look at Female's.</p>
+</div>
+
+<pre><code class="language-python">
+ youth2.sort_values(by='Female',ascending=False)
+</code></pre>
+
+<div class="output">
+    <table class="dataframe dataframe">
+  <thead>
+    <tr style="text-align: left;">
+      <th></th>
+      <th>Offense Type</th>
+      <th>Number of Youth Victims</th>
+      <th>Male</th>
+      <th>Female</th>
+      <th>Change in Number</th>
+      <th>Growth Rate (%)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>8</th>
+      <td>Fraud</td>
+      <td>1700</td>
+      <td>19.21</td>
+      <td>20.23</td>
+      <td>-728</td>
+      <td>-29.98</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Sexual Intercourse and Indecent Acts</td>
+      <td>758</td>
+      <td>1.80</td>
+      <td>16.42</td>
+      <td>-211</td>
+      <td>-21.78</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>Child and Youth Sexual Exploitation</td>
+      <td>640</td>
+      <td>4.48</td>
+      <td>10.63</td>
+      <td>-109</td>
+      <td>-14.55</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>Other</td>
+      <td>689</td>
+      <td>6.25</td>
+      <td>9.87</td>
+      <td>94</td>
+      <td>15.80</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>Offenses Against Computer Security</td>
+      <td>745</td>
+      <td>8.98</td>
+      <td>8.25</td>
+      <td>412</td>
+      <td>123.72</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Theft</td>
+      <td>1080</td>
+      <td>17.48</td>
+      <td>7.08</td>
+      <td>-85</td>
+      <td>-7.30</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>Offenses Against Personal Liberty</td>
+      <td>516</td>
+      <td>6.85</td>
+      <td>5.02</td>
+      <td>46</td>
+      <td>9.79</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Assault</td>
+      <td>957</td>
+      <td>16.81</td>
+      <td>4.83</td>
+      <td>216</td>
+      <td>29.15</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>Embezzlement</td>
+      <td>414</td>
+      <td>5.48</td>
+      <td>4.05</td>
+      <td>16</td>
+      <td>4.02</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>Negligent Driving</td>
+      <td>455</td>
+      <td>6.41</td>
+      <td>4.03</td>
+      <td>14</td>
+      <td>3.17</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>Sexual Harassment Prevention Act Violations</td>
+      <td>110</td>
+      <td>0.35</td>
+      <td>2.28</td>
+      <td>-49</td>
+      <td>-30.82</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Sexual Intercourse with a Minor</td>
+      <td>80</td>
+      <td>0.33</td>
+      <td>1.58</td>
+      <td>-49</td>
+      <td>-37.98</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>Public Endangerment</td>
+      <td>209</td>
+      <td>3.24</td>
+      <td>1.53</td>
+      <td>39</td>
+      <td>22.94</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>Offenses Against Marriage and Family</td>
+      <td>64</td>
+      <td>0.20</td>
+      <td>1.33</td>
+      <td>-1</td>
+      <td>-1.54</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>Offenses Against Sexual Privacy and Fabricated Sexual Images</td>
+      <td>89</td>
+      <td>0.89</td>
+      <td>1.19</td>
+      <td>-49</td>
+      <td>-35.51</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>Violation of Protection Orders</td>
+      <td>65</td>
+      <td>0.60</td>
+      <td>0.92</td>
+      <td>1</td>
+      <td>1.56</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Forcible Rape</td>
+      <td>14</td>
+      <td>0.02</td>
+      <td>0.32</td>
+      <td>3</td>
+      <td>27.27</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Offenses Against Public Morals</td>
+      <td>10</td>
+      <td>0.02</td>
+      <td>0.22</td>
+      <td>2</td>
+      <td>25.00</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Extortion</td>
+      <td>34</td>
+      <td>0.58</td>
+      <td>0.19</td>
+      <td>8</td>
+      <td>30.77</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Robbery</td>
+      <td>1</td>
+      <td>0.00</td>
+      <td>0.02</td>
+      <td>0</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Snatch Theft</td>
+      <td>1</td>
+      <td>0.02</td>
+      <td>0.00</td>
+      <td>-3</td>
+      <td>-75.00</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Intentional Homicide</td>
+      <td>0</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>-9</td>
+      <td>-100.00</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="content">
+    <p>From what I observed, the distribution of offense types among female victims was more scattered than that among male victims. There were also a few interesting findings. First, fraud was the most common offense type for both male and female victims. Second, sexual-related offense types appeared much more frequently among female victims </p>
+</div>
+
+<div class="content">
+    <p>Since there were 21 different offense types, the dataframe was quite large and difficult to read. At the same time, I noticed that some offense types accounted for only a very small share of cases, with percentages below or around 1%. Therefore, I would first focus on the main offense types and remove those with very small percentages from both the male and female datasets.</p>
+    <p>To make the comparison between female and male victims clearer, I split the dataset into two separate datasets, named Female and Male, respectively.</p>
+</div>
+
+<pre><code class="language-python">
+# create a new male only dataFrame
+youth2male = youth2.copy()
+youth2male = youth2male.drop(columns=["Female"])
+youth2male = youth2male[youth2male["Male"] >= 0.89]
+youth2male = youth2male.reset_index(drop=True)
+
+#Create a new female only dataframe
+youth2female = youth2.copy()
+youth2female = youth2female.drop(columns=["Male"])
+youth2female = youth2female[youth2female["Female"] >= 0.92]
+youth2female = youth2female.reset_index(drop=True)
+
+#Save the dataframes as CSV files
+youth2male.to_csv('youthmale.csv', encoding='utf8')
+youth2female.to_csv('youthfemale.csv', encoding='utf8')
+</code></pre>
+
+<div class="explain">
+    <h3>Here are some explanations.....</h3>
+    <p>The dataset actually provides a wide range of information, and each column is worth further investigation, including the Growth Rate (%) and Change in Number columns. However, for this analysis, I chose to focus on the distribution of offense types among female and male victims to identify the most common offense types, compare the differences between the two groups, and explore the possible reasons behind those differences.</p>
+    <p>As future work, I could further examine the Growth Rate (%) and Change in Number columns to better understand which offense types are increasing and which are decreasing over time. By analyzing these trends, both readers and I can gain a clearer understanding of the challenges faced by children and youth victims, as well as how we can protect them.</p>
+</div>
+
+
+
+
+
+
+
+    
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="victims.css">
+    <style>
+  body {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 650ms ease, transform 650ms ease;
+  }
+
+  body.page-exit {
+    opacity: 0;
+    transform: translateY(-30px);
+    pointer-events: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    body {
+      transition: none;
+    }
+  }
+</style>
+    
+
+</head>
+
+<body>
+   
+  <div class="content">
+        <h1>Understanding Child and Youth Victimization in Taiwan by Data</h1>
+        <p>Public concern over child protection has grown significantly in recent years among Taiwan. Following the death of a two-year-old child who was allegedly assaulted by her father in June 2026, the incident prompted social workers and organizations to call for stronger protections for vulnerable children.</p>
+        <p>To better understand the broader picture of child and youth victimization, this dataset <a href="https://data.gov.tw/dataset/178248" target="_blank">” Youth and Child Victims by Offense Type” </a>was released by the Criminal Investigation Bureau (Hereafter “CIB”) for the first half year of 2026. From the data, we are going to explore...</p>
+        <ol>
+            <li>What are the most common offense types among child/youth victims?</li>
+            <li>What are the possible reasons for the high percentages? </li>
+        </ol>
+        <h2>How does Taiwan define children and youth? </h2>
+        <p>In Taiwan, a child is defined as a person under the age of 12, while a youth is defined as a person aged 12 to 17.</p>
+        <h2>What does the data show? </h2>
+        <div class="line"></div>
+
+        <div class="note" style="margin-top:0px">
+        <p>Youth Victims by Offense Type</p>
+        <p>Note: Categories below 1% were omitted for readability.</p>
+        </div>
+        <div class="data">
+        <iframe title="Male" aria-label="Bar Chart" id="datawrapper-chart-mkA81" src="https://datawrapper.dwcdn.net/mkA81/4/" scrolling="no" frameborder="0"  !important; border: none; height="418" data-external="1"></iframe><script type="text/javascript">(function(){function e(){window.addEventListener(`message`,function(e){if(e.data[`datawrapper-height`]!==void 0){var t=document.querySelectorAll(`iframe`);for(var n in e.data[`datawrapper-height`])for(var r=0,i;i=t[r];r++)if(i.contentWindow===e.source){var a=e.data[`datawrapper-height`][n]+`px`;i.style.height=a}}})}e()})();</script>
+        <iframe title="Female" aria-label="Bar Chart" id="datawrapper-chart-SAP15" src="https://datawrapper.dwcdn.net/SAP15/5/" scrolling="no" frameborder="0" !important; border: none; data-external="1"></iframe><script type="text/javascript">(function(){function e(){window.addEventListener(`message`,function(e){if(e.data[`datawrapper-height`]!==void 0){var t=document.querySelectorAll(`iframe`);for(var n in e.data[`datawrapper-height`])for(var r=0,i;i=t[r];r++)if(i.contentWindow===e.source){var a=e.data[`datawrapper-height`][n]+`px`;i.style.height=a}}})}e()})();</script>
+        </div>
+        <h2>1. Fraud appears to be the largest</h2>
+        <p>For both female and male youth, fraud was the most common offense type. I searched for the <a href="https://www.npa.gov.tw/ch/app/data/list?module=wg057&id=2218&page=0&pageSize=15" target="_blank">distribution of fraud types among youth and found one published by the CIB</a> for the second half of 2025. </p>
+        <details class="detail">
+                <summary>About the data</summary>
+                <div class="detailed">
+                    <p>The dataset didn’t separate children and youth, with only one category called “under 18”. But I personally believe it is still worth displaying. </p>
+                    <p>For those who are not familiar with the category “General shopping fraud (Fake Sellers)”, it refers to scammers who pretend to sell products, either online or in person, to obtain victims’ money or accounts. </p>
+                </div>
+        </details>
+
+       <iframe title="Distribution of Fraud Types Among Victims Under 18" aria-label="Bar Chart" id="datawrapper-chart-zCvAk" src="https://datawrapper.dwcdn.net/zCvAk/4/" scrolling="no" frameborder="0" !important; border: none;" height="327" data-external="1"></iframe><script type="text/javascript">(function(){function e(){window.addEventListener(`message`,function(e){if(e.data[`datawrapper-height`]!==void 0){var t=document.querySelectorAll(`iframe`);for(var n in e.data[`datawrapper-height`])for(var r=0,i;i=t[r];r++)if(i.contentWindow===e.source){var a=e.data[`datawrapper-height`][n]+`px`;i.style.height=a}}})}e()})();</script>
+       <div class="note">
+       <div class="line"></div>
+        <p>Child Victims by Offense Type</p>
+        <p>Note: Categories below 1% were omitted for readability</p>
+       </div>
+       <div class="data">
+        <iframe title="Male" aria-label="Bar Chart" src="https://datawrapper.dwcdn.net/MuiSZ/3/" scrolling="no" frameborder="0" class="chart"></iframe>
+        <iframe title="Female" aria-label="Bar Chart" src="https://datawrapper.dwcdn.net/wTZMf/4/" scrolling="no" frameborder="0" class="chart"></iframe>
+      </div>
+      <h2>1. Assault ranked first among both male and female child victims</h2>
+      <p>Assault is a prominent offense type across the four charts. It ranks first among both female and male child victims and third among male youth victims. Notably, among male child victims, assault accounts for more than twice the share of the second most common offense.</p>
+      <p>To figure out the reason, I interviewed several police officers, of whom only one was willing to share a little information with me. </p>
+      <p>Officer Cheng said he believes the number was exaggerated, pointing out that assault cases may occur at home or at school and can include inappropriate discipline by parents or teachers, as well as conflicts or bullying between children. “As long as a parent files a complaint and the police classify the incident as assault, it may be recorded in the assault category.” </p>
+      <p>However, this does not mean we can ignore the high percentage of assaults involving children and youth. Under Taiwanese law, anyone who becomes aware of an assault involving a child or youth is required to report it immediately to the local authority.</p>
+      <h2>2. Negligent driving was common among children</h2>
+      <p>Negligent driving ranked second among male child victims and third among female child victims, indicating that traffic injuries remain a significant concern for children. </p>
+      <p>One possible explanation is that many families in Taiwan rely heavily on motorcycles to transport children, increasing their risk of being involved in traffic accidents.  <a href="https://www.cy.gov.tw/CyBsBoxContent.aspx?n=133&s=17862" target="_blank">According to an investigative report published by the Control Yuan in 2022</a>, it found that between 2015 and 2019, the death toll among child victims due to traffic accidents increased significantly, even under a declining birth rate. The most common reason was children being transported as passengers on motorcycles. </p>
+      <p>Another reason could be the safety of school buses. Let’s take a look at the <a href="https://www.cy.gov.tw/CyBsBoxContent.aspx?n=133&s=17862" target="_blank">school bus safety inspection statistics</a> published by the Ministry of Transportation and Communications, between 2018 and 2020.</p>
+      <details class="detail">
+        <summary>About the data</summary>
+            <div class="detailed">
+                <p>The datasets and investigative report were quite outdated, the situation right now may differ from the situation between 2018 and 2022. I tried emailing, phone calling the Control Yuan’s Statistical Department, and their response was that they haven’t conducted the related investigation since 2022. </p>
+                <p>I also tried to contact the Ministry of Transportation and Communications several times, but they haven’t responded.</p>
+            </div>
+      </details>
+      <iframe title="School Bus Violation Rate Increased Every Year" aria-label="Small multiple line chart" src="https://datawrapper.dwcdn.net/TBPHN/2/" scrolling="no" frameborder="0" class="chart"></iframe>
+
+    <div class="line"></div>
+    <h2>Sexual Offenses</h2>
+    <p>In the data, I also found that sexual offenses accounted for a large share, especially among female victims.</p>
+    <p>To understand the reason behind, I found <a href="https://dep.mohw.gov.tw/DOPS/cp-1303-59308-105.html" target="_blank">“The relationship between sexual violence victims and offenders” </a>and<a href="https://dep.mohw.gov.tw/DOPS/lp-1303-105-xCat-cat05.html" target="_blank">“Status of child and youth sexual exploitation cases”</a>datasets published last year by the Ministry of Health and Welfare.</p>
+    <details class="detail">
+        <summary>About the data</summary>
+        <div class="detailed">
+        <ol>
+          <li>In Taiwan, sexual violence includes sexual intercourse and indecent acts, but doesn’t include sexual exploition. We categorized sexual exploitation in a different category.</li>
+          <li>The “Relationship between Sexual Violence Victims and Offenders” dataset wasn’t separated by sex, but by age, which is really unfortunate since the reasons for sexual violence may differ between females and males. But I believe it can still give us a basic understanding of  the causes of sexual violence and the common places where sexual violence happens. </li>
+          <li>The “Status of child and youth sexual exploitation cases” dataset combines youth and children into one category and does not separate victims by sex. </li>
+        </ol>
+        </div>
+    </details>
+
+    <div class="data">
+        <iframe title="Relationship Between Youth Victims and Offenders" aria-label="Bar Chart" id="datawrapper-chart-OVVow" src="https://datawrapper.dwcdn.net/OVVow/2/" scrolling="no" frameborder="0" class="chart"></iframe>
+        <iframe title="Relationship Between Child Victims and Offenders" aria-label="Bar Chart" id="datawrapper-chart-ComVA" src="https://datawrapper.dwcdn.net/ComVA/2/" scrolling="no" frameborder="0" class="chart"></iframe>
+    </div>
+   
+    <iframe title="" aria-label="Table" src="https://datawrapper.dwcdn.net/eZ6kg/2/" scrolling="no" frameborder="0" class="chart"></iframe>
+    <p>For me personally, one thing that surprised me was that I initially assumed parents would be a major category of sexual violence offenders, especially in cases involving children, but the results turned out to be different, which is something I would like to investigate further.</p>
+    
+
+</div>
+
+
+</body>
+</html>

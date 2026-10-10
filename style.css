@@ -300,7 +300,7 @@ margin:0px;
 .intro-underline {
     background: linear-gradient(
         transparent 52%,
-        rgba(255, 230, 100, 0.7) 52%
+        #ddc4e7
     );
     padding: 0 3px;
 }

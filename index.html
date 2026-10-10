@@ -69,64 +69,12 @@
                     <div class="reporting" data-target="reporting-section">
                         Reporting
                     </div>
-                    
-
-                    <div class="resume" id="btn">resume</div>
-                </div>
+                                    </div>
                         </div>
                         </div>
     </div>
 
-      <div class="resume-container">
-    <div id="resume" style="display:none">
-        <h2>Education</h2>
-        <p>University of California, Berkeley<br>
-            Master of Journalism (MJ), Multimedia Track</p>
-            <br>
-        <p>National Cheng-Chi University, Taipei, Taiwan<br>
-            Bachelor of Journalism</p>
-        <h2>Experience</h2>
 
-        <h3 style="margin:0px;">NCCU Campus Media, Taipei, Taiwan (Jan. 2016 – May 2018)</h3>
-        <p style="font-weight: bold; margin:0px;">Data-multimedia reporter/ international news reporter</p>
-        <br>
-        
-       <ul>
-        <li>Pitched, conducted interviews and wrote stories across global time zones, providing breaking international news for Taiwanese readers.</li>
-        <li>Used R, Tableau, and Flourish to visualize data and create informative and accessible charts for investigative reports.</li>
-        <li>Designed and developed interactive news project examining ticket scalping in Taiwan using front-end languages and GitHub.</li>
-       </ul> 
-
-        <h3 style="margin-bottom: 0px;">TVBS, Taipei, Taiwan (Jul. 2024 – Aug. 2024)</h3>
-        <p style="font-weight: bold; margin: 0px;">Summer Intern, Digital Business Division</p>
-        <br>
-    <ul>
-        <li>Reported lifestyle and entertainment news by identifying trending topics.</li>
-        <li>Produced short news videos, gaining experience in video editing and visual storytelling.</li>
-        <li>Used Looker Studio to create reports visualizing channel growth.</li>
-    </ul>
-        <h3 style="margin-bottom: 0px;">China Times, Taipei, Taiwan (Oct. 2023 – Jun. 2024)</h3>
-        <p style="margin: 0px; font-weight: bold;">Content Creator/brand data analyst (part-time)</p>
-        <br>
-    
-    <ul>
-        <li>Reported lifestyle stories, strengthening pitching and storytelling skills.</li>
-        <li>Gained foundational data literacy by using Google Analytics to analyze user behavior on the newspaper’s official website.  </li>
-    </ul>
-        <h2>Award</h2>
-
-        <p> Best Data Reporting Award, Department of Journalism, National Cheng-Chi University, Dec. 2025</p>
-         
-        <h2>Skills</h2>
-
-        <p>Multimedia: Adobe Premiere Pro, After Effects, Photoshop, InDesign, Illustrator, Figma</p>
-        <p>Programming: JavaScript, d3, R, Python, HTML, CSS</p>
-        <p style="margin-bottom: 100px;">Data: Power BI, Tableau, OpenRefine, Excel </p>
-
-    </div>
-    
-    
-    </div>
 
     <div class="portfoliocontainer">
        <div id="portfolio" style="display:block">
@@ -385,34 +333,20 @@
 
     </div>
 
-    
-
-  <script>
-
-    const btn = document.getElementById("btn1");
-    const btn1 = document.getElementById("btn");
-
-    const portfolio = document.getElementById("portfolio");
-    const resume = document.getElementById("resume");
+<script>
 
     const sectionButtons = document.querySelectorAll("[data-target]");
 
-
-    // 點擊 Interactive / Data Viz / Data Analysis / Reporting
+    // Click the navigation buttons and smoothly scroll
+    // to the matching portfolio section.
     sectionButtons.forEach((button) => {
 
         button.addEventListener("click", () => {
 
-            // 先顯示 portfolio
-            portfolio.style.display = "block";
-            resume.style.display = "none";
-
-            // 找到對應的 section
             const target = document.getElementById(
                 button.dataset.target
             );
 
-            // 平滑滑動到該 section
             if (target) {
                 target.scrollIntoView({
                     behavior: "smooth",
@@ -424,31 +358,7 @@
 
     });
 
-
-    // 點擊 portfolio
-    btn.addEventListener("click", () => {
-
-        portfolio.style.display = "block";
-        resume.style.display = "none";
-
-    });
-
-
-    // 點擊 resume
-    btn1.addEventListener("click", () => {
-
-        portfolio.style.display = "none";
-        resume.style.display = "block";
-
-    });
-
 </script>
-
-    
-
-
-
- 
     
 </body>
 </html>

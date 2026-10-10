@@ -66,3 +66,13 @@ body::before{
     color: rgb(168, 165, 165);
     gap:10px;
 }
+
+.line{
+    display: flex;
+
+    border-top: 1px solid black;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    justify-content: center;
+
+}

@@ -24,6 +24,13 @@ body::before{
 h2 {
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
+    font-size: 23px;
+    width: min(850px, calc(100vw - 40px));
+    align-self: center;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 0px;
+    margin-top: 30px;
 }
 
 .content {
@@ -50,7 +57,7 @@ h2 {
     width: 100%;
     display: block;
     margin-top: 35px;
-    margin-bottom: 35px;
+    margin-bottom: 18px;
 }
 
 .data iframe {
@@ -71,13 +78,14 @@ h2 {
 .datagrid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    margin-top: 30px;
+    margin-top: 18px;
 
    
     width: min(850px, calc(100vw - 40px));
 
     gap: 27px;
     margin-bottom: 20px;
+
 }
 
 .datagrid iframe {
